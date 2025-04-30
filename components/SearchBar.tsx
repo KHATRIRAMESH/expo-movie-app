@@ -5,8 +5,8 @@ import { View, Text, Image, TextInput, TextInputProps } from "react-native";
 type SearchBarProps = TextInputProps & {
   placeHolder: string;
   onPress?: () => void;
-  value: string;
-  onChangeText: (text: string) => void;
+  value?: string;
+  onChangeText?: (text: string) => void;
 };
 
 const SearchBar = forwardRef<TextInput, SearchBarProps>(

@@ -15,10 +15,10 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { updateSearchCount } from "@/services/appwrite";
 const search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const inputRef = useRef<TextInput>(null);
-
 
   useFocusEffect(
     useCallback(() => {
@@ -44,16 +44,24 @@ const search = () => {
     false
   );
 
+  // Debounced search effect
   useEffect(() => {
-    const timeOutId = setTimeout(async () => {
+    const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await loadMovies();
       } else {
         reset();
       }
     }, 500);
-    return () => clearTimeout(timeOutId);
+
+    return () => clearTimeout(timeoutId);
   }, [searchQuery]);
+
+  useEffect(() => {
+    if (movies?.length! > 0 && movies?.[0]) {
+      updateSearchCount(searchQuery, movies[0]);
+    }
+  }, [movies]);
 
   return (
     <View className="flex-1 bg-primary">
