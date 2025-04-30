@@ -1,5 +1,6 @@
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
+import useKeyboardVisible from "@/hooks/useKeyboardVisible";
 import { Tabs } from "expo-router";
 import { View, Text, ImageBackground, Image } from "react-native";
 
@@ -25,27 +26,31 @@ const TabIcon = ({ focused, icon, title }: any) => {
 };
 
 const _layout = () => {
+  const isKeyboardVisible = useKeyboardVisible();
   return (
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
+
         tabBarIconStyle: {
           width: "100%",
           height: "100%",
           justifyContent: "center",
           alignContent: "center",
         },
-        tabBarStyle: {
-          backgroundColor: "#0f0d23",
-          borderRadius: 50,
-          marginHorizontal: 20,
-          marginVertical: 30,
-          height: 52,
-          position: "absolute",
-          overflow: "hidden",
-          borderWidth: 1,
-          borderColor: "#0f0d23",
-        },
+        tabBarStyle: isKeyboardVisible
+          ? { display: "none" }
+          : {
+              backgroundColor: "#0f0d23",
+              borderRadius: 50,
+              marginHorizontal: 20,
+              marginVertical: 30,
+              height: 52,
+              position: "absolute",
+              overflow: "hidden",
+              borderWidth: 1,
+              borderColor: "#0f0d23",
+            },
       }}
     >
       <Tabs.Screen

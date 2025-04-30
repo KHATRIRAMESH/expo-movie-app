@@ -10,11 +10,11 @@ import {
 // import { useSafeAreaFrame } from "react-native-safe-area-context";
 import { images } from "@/constants/images";
 import { icons } from "@/constants/icons";
-import SearchBar from "@/componentsss/SearchBar";
+import SearchBar from "@/components/SearchBar";
 import { useRouter } from "expo-router";
-import useFetch from "@/services/useFetch";
+import useFetch from "@/hooks/useFetch";
 import { fetchMovies } from "@/services/api";
-import MovieCard from "@/componentsss/MovieCard";
+import MovieCard from "@/components/MovieCard";
 
 export default function Index() {
   const router = useRouter();
@@ -24,7 +24,6 @@ export default function Index() {
     loading: movieLoading,
     error: moviesError,
   } = useFetch(() => fetchMovies({ query: "" }));
-  console.log("form index component",movies)
 
   return (
     <View className="flex-1 bg-primary ">
@@ -50,7 +49,6 @@ export default function Index() {
         ) : (
           <View className="flex-1 mt-5">
             <SearchBar
-            
               onPress={() => router.push("/search")}
               placeHolder="Search for a movie..."
             />
