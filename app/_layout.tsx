@@ -5,9 +5,10 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="default"
+        // translucent={true}
+        // backgroundColor="transparent"
+        // barStyle="default"
+        hidden={true}
       />
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

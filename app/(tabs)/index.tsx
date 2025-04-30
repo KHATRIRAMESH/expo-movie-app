@@ -16,6 +16,7 @@ import useFetch from "@/hooks/useFetch";
 import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard";
 import { getTrendingMovies } from "@/services/appwrite";
+import TrendingMoviesCard from "@/components/TrendingMoviesCard";
 
 export default function Index() {
   const router = useRouter();
@@ -72,7 +73,7 @@ export default function Index() {
               ItemSeparatorComponent={() => <View className="w-4" />}
               data={trendingMovies}
               renderItem={({ item, index }) => (
-                <Text className="text-white text-sm ">{item.title}</Text>
+                <TrendingMoviesCard movie={item} index={index} />
               )}
             />
             <>

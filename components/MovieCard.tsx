@@ -23,15 +23,10 @@ const MovieCard = ({
   vote_average,
   release_date,
 }: MovieCardProps) => {
-  
-
   return (
     <Link href={`/movies/${id}`} asChild>
       <TouchableOpacity className="w-[30%]">
         <Image
-          // height={}
-          // width={}
-          style={{ height: 180, width: 120, borderRadius: 10 }}
           className="w-full h-52 rounded-lg"
           source={{
             uri: poster_path
